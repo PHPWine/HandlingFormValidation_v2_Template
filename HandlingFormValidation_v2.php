@@ -317,6 +317,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             'name'  => 'username',
             'value' => (!empty($v2::$request_value[0]) ? $v2::$request_value[0] : false)
         ]]
+
      ]],
      ['div', ATTR => ['id'=>'last_name_con'], INNER => [
 
@@ -327,6 +328,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             'name'  => 'last_name',
             'value' => (!empty($v2::$request_value[1]) ? $v2::$request_value[1] : false)
         ]]
+
      ]],
      ['div', ATTR => ['id'=>'email_con'], INNER => [
 
@@ -338,6 +340,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             'name'  => 'email',
             'value' => (!empty($v2::$request_value[2]) ? $v2::$request_value[2] : false)
         ]]
+
      ]],
      ['div', ATTR => ['id'=>'website_con'], INNER => [
 
@@ -347,6 +350,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             'id'    => 'website',
             'name'  => 'website'
         ]]
+
      ]],
      ['div', ATTR => ['id'=>'messages_con'], INNER => [
 
@@ -356,6 +360,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             'id'    => 'message',
             'name'  => 'message'
         ]]
+
      ]],
      ['button', VALUE => ['Submit'], ATTR  => [
         'type'  => 'submit', 
@@ -365,16 +370,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
     ]], attr : setElemAttr(['action','method'],[ htmlspecialchars($_SERVER["PHP_SELF"]), 'POST']) );
 
- },[['id'],['contact']] );
+  },[['id'],['contact']] );
 
 
- echo (!empty( $contact_form )) ? $contact_form : false ;
+  echo (!empty( $contact_form )) ? $contact_form : false ;
 
- /*******************************************************************
- * PROGRAM FOR ID_SECTION : contact-form
- *******************************************************************/
-
-
+/**
+ * 
+ * Would you like me to treat a cake and coffee ?
+ * Become a donor, Because with you! We can build more...
+ * Donate:
+ * GCash : +639650332900
+ * Paypal account: syncdevprojects@gmail.com
+ * 
+ **/
 
 
 
