@@ -259,20 +259,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
    {
 
     echo style( ' .red { color: red; } .green { color: green; } ' );
-     
-    $first_child_attr =  [
-       
-      ['class'],
-      [ (  !empty( $v2::$tooltips_validate_tag ) &&  $v2::$tooltips_validate_tag == MINLENGTH ) ? 'red' : 'green' ]
-    
-    ];
-
-    $second_child_attr = [
-        
-      [ 'class' ],
-      [ ( (!empty( $v2::$tooltips_validate_tag ) &&  $v2::$tooltips_validate_tag == MINLENGTH ) || (!empty( $v2::$tooltips_validate_tag ) &&  $v2::$tooltips_validate_tag == CONTAIN_SPECIALCHAR )  ) ? 'red' : 'green' ]
-    
-    ];
     
     $v2::$tooltips = UL([ CHILD => [
         ['li', VALUE => ['Not less than 8 Characters']
@@ -384,16 +370,3 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
  * Paypal account: syncdevprojects@gmail.com
  * 
  **/
-
-
-
-
-
-
-
-
-
-
-
-
- 
