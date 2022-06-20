@@ -88,3 +88,31 @@ $validation = VALIDATE::FORM( $userpassword_err, $validType = [
     
 ]);
 ```
+
+```PHP
+     // loop through it 
+     if( !empty( $errors = UL( function() { $print = [];
+
+        foreach([
+             
+          $this->catch_un?? '', $this->catch_ue?? '', 
+          $this->catch_um?? '', $this->catch_up?? '', 
+          $this->conpassword_err?? ''] 
+          
+          as $error) 
+
+        {  $print[] = $error? ELEM('li',$error,setElemAttr(['class'],['err_msg'])) : '';  }
+
+        return (implode("", $print));
+
+    }
+    , attr  : []
+    , id    : 'id-eCatch_err'
+    , class : 'eCatch_error'
+
+    ))) {
+        
+        echo $errors;
+
+    } 
+```
