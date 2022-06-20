@@ -221,11 +221,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   * @since v1.2.0.0 
   * @since 02.07.2022
   **/
-  $v2::$validate_tag  = $v2::mandatory_validate_tag(  [ 'username','last_name', 'email', 'website', 'message' ] );
   
-  $required  = []; foreach ($v2::$validate_tag as $value) { $required[] =  ELEM('li',  $value ); } 
-  
-  echo div( ELEM('UL', implode("", $required ) ) );
+  echo div( ELEM('UL', function() use ($v2) {   $required  = []; 
+
+    foreach ($v2::mandatory_validate_tag(['username','last_name','email','website','message']) as $value ) { 
+    
+       $required[] = $value? ELEM('li',  $value ) : ''; 
+    
+     }
+
+    return (implode("",$required));
+
+  }));
 
 /**
   * @var 
@@ -237,12 +244,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   $v2::$validtype_validate_tag  = $v2::validtype_validate_tag( 'username' );   
   $v2::$validtype_email_tag     = $v2::validtype_validate_tag( 'email' ); 
 
-  echo div( UL(function() use ($v2) { $print = ''; 
+  echo div( UL(function() use ($v2) { $print = []; 
 
-     $print .= ( !empty($v2::$validtype_validate_tag) ) ? elem('li',$v2::$validtype_validate_tag, [['class'],['red']]) : '';
-     $print .= ( !empty($v2::$validtype_email_tag) )    ? elem('li',$v2::$validtype_email_tag,    [['class'],['red']]) : '';
+    foreach ($v2::mandatory_validate_tag([$v2::$validtype_validate_tag?? '',$v2::$validtype_email_tag?? '']) as $value ) { 
+    
+      $print[] = $value? ELEM('li',$value, [['class'],['red']]) : ''; 
+   
+    }
 
-     return ($print);
+    return (implode("",$print));
 
   }));
 
@@ -370,3 +380,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
  * Paypal account: syncdevprojects@gmail.com
  * 
  **/
+
+
+
+
+
+
+
+
+
+
+
+
+ 
