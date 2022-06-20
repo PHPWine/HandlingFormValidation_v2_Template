@@ -90,34 +90,6 @@ $validation = VALIDATE::FORM( $userpassword_err, $validType = [
 ```
 
 ```PHP
-     // loop through it 
-     if( !empty( $errors = UL( function() { $print = [];
-
-        foreach([
-             
-          $this->catch_un?? '', $this->catch_ue?? '', 
-          $this->catch_um?? '', $this->catch_up?? '', 
-          $this->conpassword_err?? ''] 
-          
-          as $error) 
-
-        {  $print[] = $error? ELEM('li',$error,setElemAttr(['class'],['err_msg'])) : '';  }
-
-        return (implode("", $print));
-
-    }
-    , attr  : []
-    , id    : 'id-eCatch_err'
-    , class : 'eCatch_error'
-
-    ))) {
-        
-        echo $errors;
-
-    } 
-```
-
-```PHP
  // PHPWine v 1.0 [ logic is thesame replace Element tag / Merge HTML with v1.4 ] 
  // Display all Error in one time & Design errors static PHP in one time return result (tooltips) !
  // Display all Error in one time
@@ -153,6 +125,34 @@ $eCatch_ =  _xUL( 'id-eCatch_err',
 
 echo (!empty($eCatch_)) ? $eCatch_ : '';
 
+```
+
+```PHP
+     // loop through it [ PHPWine v1.4 ]
+     if( !empty( $errors = UL( function() { $print = [];
+
+        foreach([
+             
+          $this->catch_un?? '', $this->catch_ue?? '', 
+          $this->catch_um?? '', $this->catch_up?? '', 
+          $this->conpassword_err?? ''] 
+          
+          as $error) 
+
+        {  $print[] = $error? ELEM('li',$error,setElemAttr(['class'],['err_msg'])) : '';  }
+
+        return (implode("", $print));
+
+    }
+    , attr  : []
+    , id    : 'id-eCatch_err'
+    , class : 'eCatch_error'
+
+    ))) {
+        
+        echo $errors;
+
+    } 
 ```
 
 <h2>Thanks To:</h2>
