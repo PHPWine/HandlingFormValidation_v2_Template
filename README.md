@@ -117,6 +117,44 @@ $validation = VALIDATE::FORM( $userpassword_err, $validType = [
     } 
 ```
 
+```PHP
+ // PHPWine v 1.0 [ logic is thesame replace Element tag / Merge HTML with v1.4 ] 
+ // Display all Error in one time & Design errors static PHP in one time return result (tooltips) !
+ // Display all Error in one time
+ // Replace NULL first argument $username_err to run one at the time
+ $catch_un      = VALIDATION::FORM( $username_err, $validType = [
+       
+ MINLENGTH      => [ 'username', 7, 'MINLENGTH' ], // 'MIN of 7 characters!'
+ STRINGTYPE     => [ 'username', 'STRINGTYPE' ] // Must be Alphanumeric
+      
+]);
+
+// Design errors static PHP in one time return result !
+$eCatch_ =  _xUL( 'id-eCatch_err',
+   
+   _xSTYLE( '
+             
+             .green { color: green; }
+             .red { color: red;   } 
+
+             ' 
+             , null, ' Display all Error in one time ', FUNC_ASSOC ) 
+    .DOIF( ( $catch_un == 'MINLENGTH' ||  $catch_un == 'STRINGTYPE') || is_null($catch_un) 
+    ,_xUL( 'Child_id',
+     ELEM('li','MIN of 7 characters!' ,setElemAttr(['class'],[ (   !empty($catch_un) && $catch_un == 'MINLENGTH' ) ? 'red' : 'green' ] ))
+    .ELEM('li','Must be Alphanumeric' ,setElemAttr(['class'],[ (  (!empty($catch_un) && $catch_un == 'MINLENGTH') || (!empty($catch_un) && $catch_un == 'STRINGTYPE') ) ? 'red' : 'green' ] )) 
+  
+    ,setElemAttr(['class'],['err_username_msg']), 'Child_Class', 'end-of-Child_id' , FUNC_ASSOC) , FUNC_ASSOC)
+
+,null
+,'eCatch_error'
+,'end-of-id-eCatch_err'
+,FUNC_ASSOC );
+
+echo (!empty($eCatch_)) ? $eCatch_ : '';
+
+```
+
 <h2>Thanks To:</h2>
 <h5>
 Github : To allow me to upload my PHPWine plugin Vanilla Flavour to repository<br /> 
