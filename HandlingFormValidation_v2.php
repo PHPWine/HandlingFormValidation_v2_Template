@@ -9,15 +9,6 @@ $v2 = new class extends v2 {
 /**
   * @var 
   * @property 
-  * defined array key $validate_tag property
-  * @since v1.2.0.0 
-  * @since 02.07.2022
-  **/  
-public static array|string|null $validate_tag;
-
-/**
-  * @var 
-  * @property 
   * defined array key $request_value property
   * @since v1.2.0.0 
   * @since 02.07.2022
@@ -54,48 +45,11 @@ public static array|string|null $tooltips;
   /**
     * @var 
     * @property 
-    * defined array key $tooltips property
-    * @since v1.2.0.0 
-    * @since 02.07.2022
-    **/  
-  public static array|string|null $validtype_email;
-
-/**
-  * @var 
-  * @property 
-  * defined array key $validtype_email_tag property
-  * @since v1.2.0.0 
-  * @since 02.07.2022
-  **/  
-  public static array|string|null $validtype_email_tag;
-
-  /**
-    * @var 
-    * @property 
     * defined array key $tooltips_email property
     * @since v1.2.0.0 
     * @since 02.07.2022
     **/  
   public static array|string|null $tooltips_email;
-
-/**
-  * @var 
-  * @property 
-  * defined array key $validtype_validate_tag property
-  * @since v1.2.0.0 
-  * @since 02.07.2022
-  **/ 
-public static array|string|null $validtype_validate_tag;
-
-/**
-  * @var 
-  * @property 
-  * defined array key $validtype property
-  * @since v1.2.0.0 
-  * @since 02.07.2022
-  **/
-public static array|string|null $validtype;
-
 
 /**
   * @var 
@@ -176,7 +130,9 @@ private static array $require_fields = [
   * @since v1.2.0.0 
   * @since 02.07.2022
   **/
- public static function mandatory_validate_tag(  array|string  $tag_name ) { return v2::MANDATORY( $tag_name , SELF::$require_fields ); }
+ public static function mandatory_validate_tag(  array|string  $tag_name ) { 
+   return v2::MANDATORY( $tag_name , SELF::$require_fields ); 
+ }
  
 /**
   * @var 
@@ -185,7 +141,9 @@ private static array $require_fields = [
   * @since v1.2.0.0 
   * @since 02.07.2022
   **/
-  public static function tooltips_validate_tag(  string  $tag_name ) { return v2::TOOLTIPS( $tag_name , SELF::$require_fields ); }
+  public static function tooltips_validate_tag(  string  $tag_name ) { 
+    return v2::TOOLTIPS( $tag_name , SELF::$require_fields ); 
+  }
 
 /**
   * @var 
@@ -194,7 +152,9 @@ private static array $require_fields = [
   * @since v1.2.0.0 
   * @since 02.07.2022
   **/
-  public static function validtype_validate_tag(  string $tag_name ) { return v2::VALIDTYPE( $tag_name , SELF::$require_fields ); }
+  public static function validtype_validate_tag(  string $tag_name ) { 
+    return v2::VALIDTYPE( $tag_name , SELF::$require_fields ); 
+  }
 
   /**
   * @var 
@@ -203,7 +163,9 @@ private static array $require_fields = [
   * @since v1.2.0.0 
   * @since 02.07.2022
   **/
-  public static function sanitized_request_value( array|string  $tag_name ) { return v2::SANITIZED_VALUE( $tag_name ); }
+  public static function sanitized_request_value( array|string  $tag_name ) { 
+    return v2::SANITIZED_VALUE( $tag_name ); 
+  }
 
 }; // END OF CLASS VALIDATION
  
@@ -241,12 +203,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   * @since v1.2.0.0 
   * @since 02.07.2022
   **/
-  $v2::$validtype_validate_tag  = $v2::validtype_validate_tag( 'username' );   
-  $v2::$validtype_email_tag     = $v2::validtype_validate_tag( 'email' ); 
-
+ 
   echo div( UL(function() use ($v2) { $print = []; 
 
-    foreach ($v2::mandatory_validate_tag([$v2::$validtype_validate_tag?? '',$v2::$validtype_email_tag?? '']) as $value ) { 
+    foreach ([$v2::validtype_validate_tag( 'username' ), $v2::validtype_validate_tag( 'email' )] as $value ) { 
     
       $print[] = $value? ELEM('li',$value, [['class'],['red']]) : ''; 
    
@@ -290,14 +250,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     
    ]]);
 
-  }
-  
+  }  
   
   } # END POST METHOD FORM SUBMIT !
-
-/*******************************************************************
- * PROGRAM FOR ID_SECTION : contact-form
- *******************************************************************/
 
  $contact_form = div(function() use ($v2) {
 
@@ -367,7 +322,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     ]], attr : setElemAttr(['action','method'],[ htmlspecialchars($_SERVER["PHP_SELF"]), 'POST']) );
 
   },[['id'],['contact']] );
-
 
   echo (!empty( $contact_form )) ? $contact_form : false ;
 
